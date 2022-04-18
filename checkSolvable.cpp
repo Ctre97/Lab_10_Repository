@@ -3,10 +3,11 @@
 //Speed and Power Studios
 
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
-bool checkSolvable(int puzzle[]){
+bool checkSolvable(vector<int> puzzle){
     bool solvable;
     int counter = 0;
 
@@ -20,11 +21,11 @@ bool checkSolvable(int puzzle[]){
             }
         }
     }
-if(counter %2 == 0)
+if(counter %2 == 0) // if the division results in no remainder it is even
 {
     solvable = true;
 }
-else
+else // it is odd
 {
     solvable = false;
 }

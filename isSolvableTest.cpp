@@ -4,19 +4,20 @@
 
 #include <iostream>
 #include <cmath>
+#include <vector>
 
 using namespace std;
 
-bool checkSolvable(int a[]); // prototype 
+bool checkSolvable(vector<int> puzzle); // prototype 
 
 
 int main (int argc, char *argv[]){ //command line input
-    int puzzle[9]; // array of ints to store puzzle pieces
+    vector<int> puzzle(9); //vector containing the puzzle items
     bool solvable; //variable for results of checkSolvable
 
     for (int i = 1; i < argc; i++) // puts command line arguments into an array
     {
-        puzzle [i] = atoi (argv[i]);
+        puzzle [i] = atoi (argv[i]); // converts the char to int 
     }
 
     //I know this is hideous, but it looks pretty when printed out, if you can find a cleaner way to print it, please do.
