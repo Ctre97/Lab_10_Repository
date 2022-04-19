@@ -1,4 +1,4 @@
-//solvable Checker
+//Board
 //Collin Trehar and Levi Franklin
 //Speed and Power Studios
 
