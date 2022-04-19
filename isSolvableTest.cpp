@@ -38,16 +38,16 @@ int main (int argc, char *argv[]){ //command line input
 return 0;
 }
 
-//function to fill the board from the argv input
-void fillTheBoard(int puzzleInput[], int *startingBoard[], int row, int col){
-    int i = 0;
-    for(int x = 0; x < row; x++){
-        for (int y = 0; y < 3; y++){
-            startingBoard[y][x] = puzzleInput[i];
-            i++;
-        }
-    }
-}
+// //function to fill the board from the argv input
+// void fillTheBoard(int puzzleInput[], int *startingBoard[], int row, int col){
+//     int i = 0;
+//     for(int x = 0; x < row; x++){
+//         for (int y = 0; y < 3; y++){
+//             startingBoard[y][x] = puzzleInput[i];
+//             i++;
+//         }
+//     }
+// }
 
 // function to check if the problem can be solved
 bool checkSolvable(vector<int> puzzle){
@@ -76,12 +76,12 @@ return solvable;
 }
 
 //board printing
-void print(int *startingBoard[], int row, int col){
- for (int i = 0; i < row; i++){
-     for (int j =0; j < col; j++){
-         cout << startingBoard[i][j] << " ";
-     }
-     cout << endl;
- }
+// void print(int *startingBoard[], int row, int col){
+//  for (int i = 0; i < row; i++){
+//      for (int j =0; j < col; j++){
+//          cout << startingBoard[i][j] << " ";
+//      }
+//      cout << endl;
+//  }
 
-}
+// }
