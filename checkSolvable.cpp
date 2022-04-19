@@ -7,7 +7,7 @@
 
 using namespace std;
 
-bool checkSolvable(vector<int> puzzle){
+bool checkSolvable(vector<int> puzzleInput){
     bool solvable;
     int counter = 0;
 
@@ -15,7 +15,7 @@ bool checkSolvable(vector<int> puzzle){
     {
         for (int j = i; j <= 9; j++) // number being checked against
         { 
-            if(puzzle[i] > puzzle[j])
+            if(puzzleInput[i] > puzzleInput[j])
             {
                 counter++;
             }
