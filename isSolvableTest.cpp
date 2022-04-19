@@ -5,27 +5,31 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
-#include <puzzleBoard.h>
+//#include <puzzleBoard.h> class object is not fully functioning yet
 
 using namespace std;
 
-// bool checkSolvable(vector<int> puzzle); // prototype 
-bool checkSolvable(int *startingBoard);
+bool checkSolvable(vector<int> puzzleInput); // prototype
+
+//will be implemented instead when we get the class object working correctly
+//bool checkSolvable(int *startingBoard); 
 
 
 int main (int argc, char *argv[]){ //command line input
-    vector<int> puzzleInput(18); //vector containing the puzzle items
+    vector<int> puzzleInput(9); //vector containing the puzzle items
     bool solvable; //variable for results of checkSolvable
 
-    for (int i = 1; i < 3; i++) // puts command line arguments into an array
+    for (int i = 0; i < argc; i++) // puts command line arguments into an array
     {
+        
         puzzleInput[i] = atoi (argv[i]); // converts the char to int 
     }
 
     //I know this is hideous, but it looks pretty when printed out, if you can find a cleaner way to print it, please do.
-    // cout << "Puzzle inputed is :\n" << "|" << startingBoard[0][0] << " " << puzzle[2] << " " << puzzle[3] << "|\n" << "|" << puzzle[4] << " " << puzzle[5] << " " << puzzle[6] << "|\n" << "|" << puzzle[7] << " " << puzzle[8] << " " << puzzle[9] << "|" << endl;
+    //will have a better printing function built into the class, but it isn't there yet.
+    cout << "Puzzle inputed is :\n" << "|" << puzzleInput[1] << " " << puzzleInput[2] << " " << puzzleInput[3] << "|\n" << "|" << puzzleInput[4] << " " << puzzleInput[5] << " " << puzzleInput[6] << "|\n" << "|" << puzzleInput[7] << " " << puzzleInput[8] << " " << puzzleInput[9] << "|" << endl;
 
-    solvable = checkSolvable(puzzleInput); // puts result of function into variable
+    solvable = checkSolvable(puzzleInput); // checking for solvable with the initial 1d array. Will be changed out when class is up and running. 
 
     if (solvable) // if variable returns true
     {
@@ -33,12 +37,12 @@ int main (int argc, char *argv[]){ //command line input
     }
     else // otherwise variable is not true
     {
-        cout << "Puzzle is not solvable" << endl;
+        cout << "Puzzle is not solvable :(" << endl;
     }
 return 0;
 }
 
-// //function to fill the board from the argv input
+// //class function to fill the board from the argv input
 // void fillTheBoard(int puzzleInput[], int *startingBoard[], int row, int col){
 //     int i = 0;
 //     for(int x = 0; x < row; x++){
@@ -50,7 +54,8 @@ return 0;
 // }
 
 // function to check if the problem can be solved
-bool checkSolvable(vector<int> puzzle){
+//will be adjusted to 2d array instead of vector when class is fully functional.
+bool checkSolvable(vector<int> puzzleInput){
     bool solvable;
     int counter = 0;
 
@@ -58,7 +63,7 @@ bool checkSolvable(vector<int> puzzle){
     {
         for (int j = i; j <= 9; j++) // number being checked against
         { 
-            if(puzzle[i] > puzzle[j])
+            if(puzzleInput[i] > puzzleInput[j])
             {
                 counter++;
             }
@@ -75,7 +80,7 @@ else // it is odd
 return solvable;
 }
 
-//board printing
+//board printing built into class. Not working yet.
 // void print(int *startingBoard[], int row, int col){
 //  for (int i = 0; i < row; i++){
 //      for (int j =0; j < col; j++){
