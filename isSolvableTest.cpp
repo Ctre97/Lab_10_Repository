@@ -4,19 +4,19 @@
 
 #include <iostream>
 #include <cmath>
-#include <vector>
-//#include <puzzleBoard.h> class object is not fully functioning yet
+// #include <vector>
+#include "puzzleBoard.h" //class object is not fully functioning yet
 
 using namespace std;
 
-bool checkSolvable(vector<int> puzzleInput); // prototype
+bool checkSolvable(int puzzleInput); // prototype
 
 //will be implemented instead when we get the class object working correctly
-//bool checkSolvable(int *startingBoard); 
+
 
 
 int main (int argc, char *argv[]){ //command line input
-    vector<int> puzzleInput(9); //vector containing the puzzle items
+    int puzzleInput[18]; 
     bool solvable; //variable for results of checkSolvable
 
     for (int i = 0; i < argc; i++) // puts command line arguments into an array
@@ -27,9 +27,13 @@ int main (int argc, char *argv[]){ //command line input
 
     //I know this is hideous, but it looks pretty when printed out, if you can find a cleaner way to print it, please do.
     //will have a better printing function built into the class, but it isn't there yet.
-    cout << "Puzzle inputed is :\n" << "|" << puzzleInput[1] << " " << puzzleInput[2] << " " << puzzleInput[3] << "|\n" << "|" << puzzleInput[4] << " " << puzzleInput[5] << " " << puzzleInput[6] << "|\n" << "|" << puzzleInput[7] << " " << puzzleInput[8] << " " << puzzleInput[9] << "|" << endl;
+    // cout << "Puzzle inputed is :\n" << "|" << puzzleInput[1] << " " << puzzleInput[2] << " " << puzzleInput[3] << "|\n" << "|" << puzzleInput[4] << " " << puzzleInput[5] << " " << puzzleInput[6] << "|\n" << "|" << puzzleInput[7] << " " << puzzleInput[8] << " " << puzzleInput[9] << "|" << endl;
+    puzzleBoard firstBoard;
+    
+    firstBoard.fillTheBoard(*puzzleInput);
+    firstBoard.printTheBoard();
 
-    solvable = checkSolvable(puzzleInput); // checking for solvable with the initial 1d array. Will be changed out when class is up and running. 
+    //solvable = checkSolvable(*puzzleInput); // checking for solvable with the initial 1d array. Will be changed out when class is up and running. 
 
     if (solvable) // if variable returns true
     {
@@ -39,23 +43,12 @@ int main (int argc, char *argv[]){ //command line input
     {
         cout << "Puzzle is not solvable :(" << endl;
     }
-return 0;
-}
 
-// //class function to fill the board from the argv input
-// void fillTheBoard(int puzzleInput[], int *startingBoard[], int row, int col){
-//     int i = 0;
-//     for(int x = 0; x < row; x++){
-//         for (int y = 0; y < 3; y++){
-//             startingBoard[y][x] = puzzleInput[i];
-//             i++;
-//         }
-//     }
-// }
+}
 
 // function to check if the problem can be solved
 //will be adjusted to 2d array instead of vector when class is fully functional.
-bool checkSolvable(vector<int> puzzleInput){
+bool checkSolvable(int puzzleInput[]){
     bool solvable;
     int counter = 0;
 
@@ -79,14 +72,3 @@ else // it is odd
 }
 return solvable;
 }
-
-//board printing built into class. Not working yet.
-// void print(int *startingBoard[], int row, int col){
-//  for (int i = 0; i < row; i++){
-//      for (int j =0; j < col; j++){
-//          cout << startingBoard[i][j] << " ";
-//      }
-//      cout << endl;
-//  }
-
-// }
