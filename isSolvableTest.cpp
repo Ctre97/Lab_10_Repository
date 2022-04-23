@@ -13,15 +13,12 @@ bool checkSolvable(int puzzleInput); // prototype
 
 //will be implemented instead when we get the class object working correctly
 
-
-
 int main (int argc, char *argv[]){ //command line input
     int puzzleInput[18]; 
     bool solvable; //variable for results of checkSolvable
 
     for (int i = 0; i < argc; i++) // puts command line arguments into an array
     {
-        
         puzzleInput[i] = atoi (argv[i]); // converts the char to int 
     }
 
@@ -30,7 +27,7 @@ int main (int argc, char *argv[]){ //command line input
     // cout << "Puzzle inputed is :\n" << "|" << puzzleInput[1] << " " << puzzleInput[2] << " " << puzzleInput[3] << "|\n" << "|" << puzzleInput[4] << " " << puzzleInput[5] << " " << puzzleInput[6] << "|\n" << "|" << puzzleInput[7] << " " << puzzleInput[8] << " " << puzzleInput[9] << "|" << endl;
     puzzleBoard firstBoard;
     
-    firstBoard.fillTheBoard(*puzzleInput);
+    firstBoard.fillTheBoard(puzzleInput);
     firstBoard.printTheBoard();
 
     //solvable = checkSolvable(*puzzleInput); // checking for solvable with the initial 1d array. Will be changed out when class is up and running. 
@@ -46,8 +43,7 @@ int main (int argc, char *argv[]){ //command line input
 
 }
 
-// function to check if the problem can be solved
-//will be adjusted to 2d array instead of vector when class is fully functional.
+// function to check if the problem can be solved. Can be done from original argv input
 bool checkSolvable(int puzzleInput[]){
     bool solvable;
     int counter = 0;
