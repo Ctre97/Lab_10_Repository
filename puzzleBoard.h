@@ -35,7 +35,7 @@ public:
         {
             for (int y = 0; y < 3; ++y)
             {
-                cout << list1[i] << " " << endl;
+                cout << list1[i] << " ";
                 board[x][y] = list1[i++];
             }
         }
@@ -75,37 +75,13 @@ public:
     }
 
     //find the blank tile
-    int findBlank(){
-        for (int x = 0; x < 3; x++){
-            for (int y = 0; y < 3; y++){
-                if (board[x][y] == 0)
-                return board[x][y];
-            }
-        }
-    }
+    int findBlank(const puzzleBoard &list ){
+        
+    };
 
 }; // end class
 
-// function to fill the board from the argv input
-//  void fillTheBoard(int puzzleInput[], int *startingBoard[], int row, int col){
-//      int i = 0;
-//      for(int x = 0; x < row; x++){
-//          for (int y = 0; y < col; y++){
-//              startingBoard[y][x] = puzzleInput[i];
-//              i++;
-//          }
-//      }
-//  }
 
-// board printing
-//  void puzzleBoard::printTheBoard(int *startingBoard[], int row, int col){
-//   for (int i = 0; i < row; i++){
-//       for (int j =0; j < col; j++){
-//           cout << startingBoard[i][j] << " ";
-//       }
-//       cout << endl;
-//   }
 
-// }
 
 #endif
