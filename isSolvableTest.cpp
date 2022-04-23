@@ -30,6 +30,8 @@ int main (int argc, char *argv[]){ //command line input
     firstBoard.fillTheBoard(puzzleInput);
     firstBoard.printTheBoard();
 
+    cout << "The Blank is at" << firstBoard.findBlank(firstBoard) << endl;
+
     //solvable = checkSolvable(*puzzleInput); // checking for solvable with the initial 1d array. Will be changed out when class is up and running. 
 
     if (solvable) // if variable returns true
