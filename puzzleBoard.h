@@ -15,50 +15,45 @@ class puzzleBoard
 {
 
 public:
-    int board[3][3];
+    static int board[3][3];
 
-    // //Default constructor
-    // puzzleBoard(){
-    //     for (int x = 0; x < 9; x++){
-    //         for (int y = 0; y < 9; y++){
-    //         board[x][y] = 0;
-    //         }
-    //     }
-    // }
-
-    // assign argv items to the 2d array
+    // // assign argv items to the 2d array
     static void fillTheBoard(int *list1)
     {
-        int i = 0;
-        int board[3][3];
+        int t = 1;
+        int board[3][3] = {0, 0};
         for (int x = 0; x < 3; ++x)
         {
             for (int y = 0; y < 3; ++y)
             {
-                cout << list1[i] << " ";
-                board[x][y] = list1[i++];
+                //cout << "Initial input: " << list1[t] << " " << endl;
+                board[x][y] = list1[t];
+                t++;
             }
         }
     }
 
-    // print the board
+    //print the board
     static void printTheBoard()
     {
-        int board[3][3];
-        for (int x = 0; x < 3; x++)
-        {
-            for (int y = 0; y < 3; y++)
+        int tempBoard[3][3];
+        cout << "The board state is : " << endl;
+        cout << "_______" << endl; // to create a box around the puzzle
+        for (int i = 0; i < 3; i++)
+        { 
+            cout << "|"; // box around the puzzle
+            for (int j = 0; j < 3; j++)
             {
-                cout << board[x][y] << " ";
+                cout << tempBoard[i][j] << "|"; // prints data and then space divider
             }
             cout << endl;
         }
+        cout << "-------" << endl; // bottom of the box around the puzzle
     };
 
     //overload == for comparing boards
     bool operator==(const puzzleBoard &other)
     {
-
         for (int i = 0; i < 9; i++)
         {
             if (this->board[i] != other.board[i])
@@ -74,9 +69,16 @@ public:
         return !(*this == other);
     }
 
-    //find the blank tile
-    int findBlank(const puzzleBoard &list ){
-        
+    // //find the blank tile
+    void findBlank(){
+        int tempBoard[3][3];
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++)
+            if (tempBoard[i][j] == 0){
+
+                cout << "The blank is at: " << i << "," << j << endl;
+            }
+        }
     };
 
 }; // end class

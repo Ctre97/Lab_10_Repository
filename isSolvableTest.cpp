@@ -14,10 +14,10 @@ bool checkSolvable(int puzzleInput); // prototype
 //will be implemented instead when we get the class object working correctly
 
 int main (int argc, char *argv[]){ //command line input
-    int puzzleInput[18]; 
+    int puzzleInput[9]; 
     bool solvable; //variable for results of checkSolvable
 
-    for (int i = 0; i < argc; i++) // puts command line arguments into an array
+    for (int i = 0; i < 10; i++) // puts command line arguments into an array
     {
         puzzleInput[i] = atoi (argv[i]); // converts the char to int 
     }
@@ -30,7 +30,7 @@ int main (int argc, char *argv[]){ //command line input
     firstBoard.fillTheBoard(puzzleInput);
     firstBoard.printTheBoard();
 
-    cout << "The Blank is at" << firstBoard.findBlank(firstBoard) << endl;
+    firstBoard.findBlank();
 
     //solvable = checkSolvable(*puzzleInput); // checking for solvable with the initial 1d array. Will be changed out when class is up and running. 
 
