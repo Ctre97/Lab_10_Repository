@@ -2,6 +2,10 @@
 //Collin Trehar and Levi Franklin
 //Speed and Power Studios
 
+//isValidMove() function is in creation at the bottom of this file. It will be a function
+//for the movePiece class that has not been implemented yet. Thus it is just hanging out here. 
+
+
 #include <iostream>
 #include <cmath>
 // #include <vector>
@@ -14,10 +18,10 @@ bool checkSolvable(int puzzleInput); // prototype
 //will be implemented instead when we get the class object working correctly
 
 int main (int argc, char *argv[]){ //command line input
-    int puzzleInput[9]; 
+    int puzzleInput[18]; 
     bool solvable; //variable for results of checkSolvable
 
-    for (int i = 0; i < 10; i++) // puts command line arguments into an array
+    for (int i = 0; i < 19; i++) // puts command line arguments into an array
     {
         puzzleInput[i] = atoi (argv[i]); // converts the char to int 
     }
@@ -28,7 +32,9 @@ int main (int argc, char *argv[]){ //command line input
     puzzleBoard firstBoard;
     
     firstBoard.fillTheBoard(puzzleInput);
+    // firstBoard.createGoalBoard(puzzleInput);
     firstBoard.printTheBoard();
+    firstBoard.printGoalBoard();
 
     firstBoard.findBlank();
 
@@ -70,3 +76,25 @@ else // it is odd
 }
 return solvable;
 }
+
+
+// isValidMove(); cannot be fully implemented yet as we do not have a move to pass it yet.
+//movemment function will be created this week. Function may be changed when move() is implemented
+//but this is the basic principals. We will assume the move is not valid. We will then pass in the
+// new 2d array coordinates using [i] and [j]. If those coordinates fit withing what is allowed
+// we will assume the move is valid. The movement function will only allow either i or j to be
+// incremented or decremented to avoid diagonal moves which are invalid. 
+
+// bool isValidMove(const puzzleBoard &board){
+//     bool isValid = false;
+//     int i = 0;
+//     int j = 0;
+//     int tempBoard[i][j];
+ 
+//  if( i >= 0 && i <= 4){
+//      isValid = true;
+//  }
+
+//  return isValid;
+
+// }
