@@ -26,15 +26,16 @@ int main (int argc, char *argv[]){ //command line input
         puzzleInput[i] = atoi (argv[i]); // converts the char to int 
     }
 
-    //I know this is hideous, but it looks pretty when printed out, if you can find a cleaner way to print it, please do.
-    //will have a better printing function built into the class, but it isn't there yet.
-    // cout << "Puzzle inputed is :\n" << "|" << puzzleInput[1] << " " << puzzleInput[2] << " " << puzzleInput[3] << "|\n" << "|" << puzzleInput[4] << " " << puzzleInput[5] << " " << puzzleInput[6] << "|\n" << "|" << puzzleInput[7] << " " << puzzleInput[8] << " " << puzzleInput[9] << "|" << endl;
+  
     puzzleBoard firstBoard;
+
+    puzzleBoard goalBoard;
     
     firstBoard.fillTheBoard(puzzleInput);
-    // firstBoard.createGoalBoard(puzzleInput);
     firstBoard.printTheBoard();
-    firstBoard.printGoalBoard();
+
+    goalBoard.createGoalBoard(puzzleInput);
+    goalBoard.printGoalBoard();
 
     firstBoard.findBlank();
 
