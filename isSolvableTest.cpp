@@ -10,6 +10,7 @@
 #include <cmath>
 // #include <vector>
 #include "puzzleBoard.h" //class object is not fully functioning yet
+// #include "move.h"
 
 using namespace std;
 
@@ -37,7 +38,7 @@ int main (int argc, char *argv[]){ //command line input
     goalBoard.createGoalBoard(puzzleInput);
     goalBoard.printGoalBoard();
 
-    firstBoard.findBlank();
+    // firstBoard.findBlank();
 
     //solvable = checkSolvable(*puzzleInput); // checking for solvable with the initial 1d array. Will be changed out when class is up and running. 
 
@@ -77,25 +78,3 @@ else // it is odd
 }
 return solvable;
 }
-
-
-// isValidMove(); cannot be fully implemented yet as we do not have a move to pass it yet.
-//movemment function will be created this week. Function may be changed when move() is implemented
-//but this is the basic principals. We will assume the move is not valid. We will then pass in the
-// new 2d array coordinates using [i] and [j]. If those coordinates fit withing what is allowed
-// we will assume the move is valid. The movement function will only allow either i or j to be
-// incremented or decremented to avoid diagonal moves which are invalid. 
-
-// bool isValidMove(const puzzleBoard &board){
-//     bool isValid = false;
-//     int i = 0;
-//     int j = 0;
-//     int tempBoard[i][j];
- 
-//  if( i >= 0 && i <= 4){
-//      isValid = true;
-//  }
-
-//  return isValid;
-
-// }

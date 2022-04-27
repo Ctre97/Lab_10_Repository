@@ -17,21 +17,21 @@ class puzzleBoard
 public:
     static int board[3][3];
 
-    // default constructor
-    puzzleBoard();
+    // // default constructor
+    // puzzleBoard();
 
-    //copy constructor 
-    puzzleBoard(const puzzleBoard &obj) {
-    int newBoard[3][3] = {0, 0};
-        for (int i = 0; i < 3; ++i)
-        {
-            for (int j = 0; j < 3; ++j)
-            {
-               newBoard[i][j] = board[i][j];
+    // //copy constructor 
+    // puzzleBoard(const puzzleBoard &obj) {
+    // int newBoard[3][3] = {0, 0};
+    //     for (int i = 0; i < 3; ++i)
+    //     {
+    //         for (int j = 0; j < 3; ++j)
+    //         {
+    //            newBoard[i][j] = board[i][j];
                 
-            }
-        }
-    };
+    //         }
+    //     }
+    // };
 
     // // assign argv items to the 2d array
     static void fillTheBoard(int *list1)
