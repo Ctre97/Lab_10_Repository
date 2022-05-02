@@ -8,8 +8,7 @@
 
 #include <iostream>
 #include <cmath>
-// #include <vector>
-#include "puzzleBoard.h" //class object is not fully functioning yet
+#include "puzzleBoard.h"
 // #include "move.h"
 
 using namespace std;
@@ -30,16 +29,14 @@ int main (int argc, char *argv[]){ //command line input
   
     puzzleBoard firstBoard;
 
-    puzzleBoard goalBoard;
     
     firstBoard.fillTheBoard(puzzleInput);
     firstBoard.printTheBoard();
+    firstBoard.findBlank();
 
+   puzzleBoard goalBoard;
     goalBoard.createGoalBoard(puzzleInput);
     goalBoard.printGoalBoard();
-
-    // firstBoard.findBlank();
-
     //solvable = checkSolvable(*puzzleInput); // checking for solvable with the initial 1d array. Will be changed out when class is up and running. 
 
     if (solvable) // if variable returns true

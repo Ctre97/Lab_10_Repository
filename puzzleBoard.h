@@ -13,28 +13,29 @@ using namespace std;
 
 class puzzleBoard
 {
+private:
+static int board[3][3];
 
 public:
-    static int board[3][3];
+// assign argv items to the 2d array for the starting state
+static void fillTheBoard(int *list1);
+// assing argv items to the 2d array for the goal state
+static void createGoalBoard(int *list);
+// print the board
+static void printTheBoard();
+//pring goal board
+static void printGoalBoard();
+// overload == for comparing boards
+bool operator==(const puzzleBoard &other);
+// overload of != for comparing
+bool operator!=(const puzzleBoard &other);
+//finds the blank space
+void findBlank()const;
 
-    // // default constructor
-    // puzzleBoard();
+}; // end class
 
-    // //copy constructor 
-    // puzzleBoard(const puzzleBoard &obj) {
-    // int newBoard[3][3] = {0, 0};
-    //     for (int i = 0; i < 3; ++i)
-    //     {
-    //         for (int j = 0; j < 3; ++j)
-    //         {
-    //            newBoard[i][j] = board[i][j];
-                
-    //         }
-    //     }
-    // };
-
-    // // assign argv items to the 2d array
-    static void fillTheBoard(int *list1)
+//fill starting state of board
+void puzzleBoard::fillTheBoard(int *list1)
     {
         int t = 1;
         int board[3][3] = {0, 0};
@@ -49,11 +50,8 @@ public:
         }
     };
 
-    // doesn't work yet.
-    // seems to override the original filled board. Goal board
-    // may need to be an inherited class of puzzleBoard. idk
-
-    static void createGoalBoard(int *list){
+// //fills the goal state of the board
+void puzzleBoard::createGoalBoard(int *list){
         int t = 10;
         int goalBoard[3][3] = {0, 0};
         for (int x = 0; x < 3; ++x)
@@ -67,8 +65,8 @@ public:
         }
     };
 
-    // print the board
-    static void printTheBoard() // print off the current board
+//pring board
+void puzzleBoard::printTheBoard() // print off the current board
     {
         int board[3][3];
         cout << "The board state is : " << endl;
@@ -85,10 +83,8 @@ public:
         cout << "-------" << endl; // bottom of the box around the puzzle
     };
 
-    // doesn't work yet.
-    // seems to override the original filled board. Goal board
-    // may need to be an inherited class of puzzleBoard. idk
-    static void printGoalBoard() // to print off our goal board
+// prints the goal state 
+void puzzleBoard::printGoalBoard() // to print off our goal board
     {
         int goalBoard[3][3];
         cout << "The Goal Board is : " << endl;
@@ -105,8 +101,21 @@ public:
         cout << "-------" << endl; // bottom of the box around the puzzle
     };
 
-    // overload == for comparing boards
-    bool operator==(const puzzleBoard &other)
+//find blank space
+void puzzleBoard::findBlank()const
+    {
+        int tempBoard[3][3];
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+             {   if (tempBoard[i][j] == 0)
+                    cout << "The blank is at: " << i << "," << j << endl;
+                }
+        }
+    };
+
+// overload == for comparing boards
+bool puzzleBoard::operator==(const puzzleBoard &other)
     {
         for (int i = 0; i < 3; i++)
         {
@@ -121,30 +130,9 @@ public:
         return true;
     }
 
-    // overload of != for comparing
-    bool operator!=(const puzzleBoard &other)
+// overload of != for comparing
+bool puzzleBoard::operator!=(const puzzleBoard &other)
     {
         return !(*this == other);
     }
-
-    // //find the blank tile
-    // needs to be reconfigued to return the address of the cell holding
-    // the zero, but I havent figured that out yet.
-    // thus it just does a nice print out for now
-    void findBlank()
-    {
-        int tempBoard[3][3];
-        for (int i = 0; i < 3; i++)
-        {
-            for (int j = 0; j < 3; j++)
-                if (tempBoard[i][j] == 0)
-                {
-
-                    cout << "The blank is at: " << i << "," << j << endl;
-                }
-        }
-    };
-
-}; // end class
-
 #endif

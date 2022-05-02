@@ -26,7 +26,7 @@ void moveBlank(const puzzleBoard *board[], int i, int j)
     moveDown(board, i, j);
 }
 
-void moveRight(const puzzleBoard *board[], int i, int j)
+void moveRight(puzzleBoard board[][3], int i, int j)
 {
     bool isValid = false;
     int temp = 0;
