@@ -17,6 +17,8 @@ public:
     static int board[3][3];
 
 public:
+// the board
+static int board[3][3];
     // assign argv items to the 2d array for the starting state
     static void fillTheBoard(int *list1);
     // assing argv items to the 2d array for the goal state

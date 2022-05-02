@@ -7,11 +7,11 @@
 using namespace std;
 
 void moveBlank(puzzleBoard board, int i, int j);
-void moveRight(board, i, j);
-void moveLeft(board, i, j);
-void moveUp(board, i, j);
-void moveDown(board, i, j);
-bool isValidMove(i, isValid);
+void moveRight(puzzleBoard board, int i, int j);
+void moveLeft(puzzleBoard board, int i, int j);
+void moveUp(puzzleBoard board, int i, int j);
+void moveDown(puzzleBoard board, int i, int j);
+bool isValidMove(int i, bool isValid);
 
 void findBlank(puzzleBoard board)
 {
