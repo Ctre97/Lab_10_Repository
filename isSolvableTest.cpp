@@ -9,7 +9,7 @@
 #include <iostream>
 #include <cmath>
 #include "puzzleBoard.h"
-// #include "move.h"
+#include "move.h"
 
 using namespace std;
 
@@ -48,6 +48,7 @@ int main (int argc, char *argv[]){ //command line input
         cout << "Puzzle is not solvable :(" << endl;
     }
 
+    findBlank(firstBoard);
 }
 
 // function to check if the problem can be solved. Can be done from original argv input
