@@ -34,7 +34,6 @@ int main (int argc, char *argv[]){ //command line input
     
     firstBoard.fillTheBoard(puzzleInput);
     firstBoard.printTheBoard();
-    firstBoard.findBlank();
 
    puzzleBoard goalBoard;
     goalBoard.createGoalBoard(puzzleInput);
