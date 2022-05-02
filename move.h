@@ -96,14 +96,14 @@ void moveDown(puzzleBoard board, int i, int j)
 
 bool isValidMove(int i, bool isValid)
 {
-    bool isValid = false;
+    bool checkValid = false;
 
     if (i >= 0 && i <= 4)
     {
-        isValid = true;
+        checkValid = true;
     }
 
-    return isValid;
+    return checkValid;
 }
 
 #endif
