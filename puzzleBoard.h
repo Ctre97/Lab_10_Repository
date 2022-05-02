@@ -31,7 +31,7 @@ static int board[3][3];
     // overload = to be a memberwise copy
     void operator=(const puzzleBoard &other);
     // finds the blank space
-    void findBlank() const;
+    // void findBlank() const;
 
 }; // end class
 
@@ -103,19 +103,19 @@ void puzzleBoard::printGoalBoard() // to print off our goal board
     cout << "-------" << endl; // bottom of the box around the puzzle
 };
 
-// find blank space
-void puzzleBoard::findBlank() const
-{
-    int tempBoard[3][3];
-    for (int i = 0; i < 3; i++)
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            if (tempBoard[i][j] == 0)
-                cout << "The blank is at: " << i << "," << j << endl;
-        }
-    }
-};
+// find blank space moved to move.h and refactored
+// void puzzleBoard::findBlank() const
+// {
+//     int tempBoard[3][3];
+//     for (int i = 0; i < 3; i++)
+//     {
+//         for (int j = 0; j < 3; j++)
+//         {
+//             if (tempBoard[i][j] == 0)
+//                 cout << "The blank is at: " << i << "," << j << endl;
+//         }
+//     }
+// };
 
 // overload == for comparing boards
 bool puzzleBoard::operator==(const puzzleBoard &other)
