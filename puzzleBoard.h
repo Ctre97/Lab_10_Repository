@@ -13,7 +13,7 @@ using namespace std;
 
 class puzzleBoard
 {
-private:
+public:
     static int board[3][3];
 
 public:

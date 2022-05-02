@@ -6,19 +6,26 @@
 
 using namespace std;
 
-void findBlank(const puzzleBoard *board[])
+void moveBlank(puzzleBoard board, int i, int j);
+void moveRight(board, i, j);
+void moveLeft(board, i, j);
+void moveUp(board, i, j);
+void moveDown(board, i, j);
+bool isValidMove(i, isValid);
+
+void findBlank(puzzleBoard board)
 {
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
-            if (&board[i][j] == 0)
+            if (board.board[i][j] == 0)
             {
                 moveBlank(board, i, j);
             }
     }
 }
 
-void moveBlank(const puzzleBoard *board[], int i, int j)
+void moveBlank(puzzleBoard board, int i, int j)
 {
     moveRight(board, i, j);
     moveLeft(board, i, j);
@@ -26,11 +33,27 @@ void moveBlank(const puzzleBoard *board[], int i, int j)
     moveDown(board, i, j);
 }
 
-void moveRight(puzzleBoard board[][3], int i, int j)
+void moveRight(puzzleBoard board, int i, int j)
 {
     bool isValid = false;
     int temp = 0;
-    board[i + 1][j]; // moves 0 right
+    board.board[i + 1][j]; // moves 0 right
+    isValidMove(i, isValid);
+    if (isValid)
+    {
+        puzzleBoard newBoard = board;
+        temp = newBoard.board[i + 1][j];
+        newBoard.board[i][j] = temp;
+        newBoard.board[i + 1][j] = 0;
+        newBoard.printTheBoard;
+    };
+}
+
+void moveLeft(puzzleBoard board, int i, int j)
+{
+    bool isValid = false;
+    int temp = 0;
+    board.board[i - 1][j]; // moves 0 left
     isValidMove(i, isValid);
     if (isValid)
     {
@@ -41,26 +64,11 @@ void moveRight(puzzleBoard board[][3], int i, int j)
     };
 }
 
-void moveLeft(const puzzleBoard *board[], int i, int j)
+void moveUp(puzzleBoard board, int i, int j)
 {
     bool isValid = false;
     int temp = 0;
-    board[i - 1][j]; // moves 0 left
-    isValidMove(i, isValid);
-    if (isValid)
-    {
-        puzzleBoard newBoard = board;
-        temp = newBoard.board[i + 1][j];
-        newBoard.board[i][j] = temp;
-        newBoard.board[i + 1][j] = 0;
-    };
-}
-
-void moveUp(const puzzleBoard *board[], int i, int j)
-{
-    bool isValid = false;
-    int temp = 0;
-    board[i][j - 1]; // moves 0 up
+    board.board[i][j - 1]; // moves 0 up
     isValidMove(j, isValid);
     if (isValid)
     {
@@ -71,11 +79,11 @@ void moveUp(const puzzleBoard *board[], int i, int j)
     };
 }
 
-void moveDown(const puzzleBoard *board[], int i, int j)
+void moveDown(puzzleBoard board, int i, int j)
 {
     bool isValid = false;
     int temp = 0;
-    board[i][j + 1]; // moves 0 down
+    board.board[i][j + 1]; // moves 0 down
     isValidMove(j, isValid);
     if (isValid)
     {
