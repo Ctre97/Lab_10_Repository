@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <deque>
 #include "puzzleBoard.h"
 #include "move.h"
 
@@ -18,6 +19,7 @@ int main (int argc, char *argv[]){ //command line input
     int puzzleInput[18]; 
     int solveInput[9];
     bool solvable; //variable for results of checkSolvable
+    deque <puzzleBoard> boardQueue;
 
     for (int i = 0; i < 19; i++) // puts command line arguments into an array
     {
@@ -30,16 +32,14 @@ int main (int argc, char *argv[]){ //command line input
     }
   
     puzzleBoard firstBoard;
-
-    
     firstBoard.fillTheBoard(puzzleInput);
     firstBoard.printTheBoard();
-    firstBoard.findBlank();
+    boardQueue.push_front (firstBoard);
 
    puzzleBoard goalBoard;
     goalBoard.createGoalBoard(puzzleInput);
     goalBoard.printGoalBoard();
-    solvable = checkSolvable(solveInput); // checking for solvable with the initial 1d array. Will be changed out when class is up and running. 
+    solvable = checkSolvable(solveInput);
 
     checkSolvable(solveInput);
     solvable = checkSolvable;
@@ -53,7 +53,7 @@ int main (int argc, char *argv[]){ //command line input
         cout << "Puzzle is not solvable :(" << endl;
     }
 
-    findBlank(firstBoard);
+    findBlank(boardQueue.front());
     
 return 0;
 }
