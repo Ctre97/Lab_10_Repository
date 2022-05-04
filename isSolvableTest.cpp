@@ -47,9 +47,21 @@ int main (int argc, char *argv[]){ //command line input
        }
    }
 
+<<<<<<< HEAD
     // firstBoard.fillTheBoard(puzzleInput);
     initialBoard.printTheBoard(initialBoard);
     boardQueue.push_front (initialBoard);
+=======
+    for (int i = 0; i < 9; i++)
+    {
+        solveInput[i] = atoi (argv[i]);
+    }
+  
+    puzzleBoard firstBoard;
+    firstBoard.fillTheBoard(puzzleInput);
+    firstBoard.printTheBoard();
+    boardQueue.push_front(firstBoard);
+>>>>>>> 40c61554f0113d9d17edb742adcb662d78c1a601
 
     // goalBoard.createGoalBoard(puzzleInput);
     goalBoard.printGoalBoard(goalBoard);
@@ -67,7 +79,7 @@ int main (int argc, char *argv[]){ //command line input
         cout << "Puzzle is not solvable :(" << endl;
     }
 
-    findBlank(boardQueue.front());
+    findBlank(boardQueue.front(), boardQueue);
     
 return 0;
 }
