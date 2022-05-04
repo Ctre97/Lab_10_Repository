@@ -53,7 +53,7 @@ int main (int argc, char *argv[]){ //command line input
         cout << "Puzzle is not solvable :(" << endl;
     }
 
-    findBlank(boardQueue.front());
+    findBlank(boardQueue.front(), boardQueue);
     
 return 0;
 }
