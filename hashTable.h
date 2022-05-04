@@ -30,3 +30,5 @@ string operator==(const puzzleBoard &board, string hash){
         }
     }
 };
+
+
