@@ -98,7 +98,7 @@ bool isValidMove(int i, bool isValid)
 {
     bool checkValid = false;
 
-    if (i >= 0 && i <= 4)
+    if (i >= 0 && i < 2)
     {
         checkValid = true;
     }
