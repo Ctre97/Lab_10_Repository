@@ -57,13 +57,13 @@ void moveLeft( int i, int j, deque <puzzleBoard>& boardQueue)
 {
     bool isValid = false;
     int temp = 0;
-       isValidMove(i-1, isValid);
+    isValidMove(i-1, isValid);
     if (isValid)
     {
         puzzleBoard newBoard = boardQueue.front();
-        temp = newBoard.board[i + 1][j];
+        temp = newBoard.board[i - 1][j];
         newBoard.board[i][j] = temp;
-        newBoard.board[i + 1][j] = 0;
+        newBoard.board[i - 1][j] = 0;
         boardQueue.push_back(newBoard);
         //newBoard.printTheBoard(newBoard);
     };
@@ -73,14 +73,13 @@ void moveUp( int i, int j, deque <puzzleBoard>& boardQueue)
 {
     bool isValid = false;
     int temp = 0;
-    boardQueue.front().board[i][j - 1]; // moves 0 up
     isValidMove(j-1, isValid);
     if (isValid)
     {
         puzzleBoard newBoard = boardQueue.front();
-        temp = newBoard.board[i + 1][j];
+        temp = newBoard.board[i][j - 1];
         newBoard.board[i][j] = temp;
-        newBoard.board[i + 1][j] = 0;
+        newBoard.board[i][j - 1] = 0;
         boardQueue.push_back(newBoard);
         //newBoard.printTheBoard(newBoard);
     };
@@ -90,14 +89,13 @@ void moveDown( int i, int j, deque <puzzleBoard>& boardQueue)
 {
     bool isValid = false;
     int temp = 0;
-    boardQueue.front().board[i][j + 1]; // moves 0 down
     isValidMove(j+1, isValid);
     if (isValid)
     {
         puzzleBoard newBoard = boardQueue.front();
-        temp = newBoard.board[i + 1][j];
+        temp = newBoard.board[i][j + 1];
         newBoard.board[i][j] = temp;
-        newBoard.board[i + 1][j] = 0;
+        newBoard.board[i][j + 1] = 0;
         boardQueue.push_back(newBoard);
         //newBoard.printTheBoard(newBoard);
     };
