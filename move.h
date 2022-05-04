@@ -5,6 +5,8 @@
 #include <iostream>
 #include "puzzleBoard.h"
 #include <deque>
+#include <unordered_map>
+#include "hashTable.h"
 
 using namespace std;
 
@@ -14,6 +16,8 @@ void moveLeft(int i, int j, deque <puzzleBoard>& boardQueue);
 void moveUp(int i, int j, deque <puzzleBoard>& boardQueue);
 void moveDown(int i, int j, deque <puzzleBoard>& boardQueue);
 bool isValidMove(int i, bool &isValid);
+
+unordered_map <string, puzzleBoard, hashTable> visited;
 
 void findBlank( deque <puzzleBoard>& boardQueue)
 {
@@ -48,7 +52,11 @@ void moveRight( int i, int j, deque <puzzleBoard>& boardQueue)
         temp = newBoard.board[i + 1][j];
         newBoard.board[i][j] = temp;
         newBoard.board[i + 1][j] = 0;
+        unordered_map<string, puzzleBoard>::const_iterator got = visited.find(newBoard.key);
+        if (got == visited.end())
+        {
         boardQueue.push_back(newBoard);
+        }
         //newBoard.printTheBoard(newBoard);
     }
 }
@@ -64,7 +72,11 @@ void moveLeft( int i, int j, deque <puzzleBoard>& boardQueue)
         temp = newBoard.board[i - 1][j];
         newBoard.board[i][j] = temp;
         newBoard.board[i - 1][j] = 0;
-        boardQueue.push_back(newBoard);
+        unordered_map<string, puzzleBoard>::const_iterator got = visited.find(newBoard.key);
+        if (got == visited.end())
+        {
+            boardQueue.push_back(newBoard);
+        }
         //newBoard.printTheBoard(newBoard);
     };
 }
@@ -80,7 +92,11 @@ void moveUp( int i, int j, deque <puzzleBoard>& boardQueue)
         temp = newBoard.board[i][j - 1];
         newBoard.board[i][j] = temp;
         newBoard.board[i][j - 1] = 0;
-        boardQueue.push_back(newBoard);
+        unordered_map<string, puzzleBoard>::const_iterator got = visited.find(newBoard.key);
+        if (got == visited.end())
+        {
+            boardQueue.push_back(newBoard);
+        }
         //newBoard.printTheBoard(newBoard);
     };
 }
@@ -96,7 +112,11 @@ void moveDown( int i, int j, deque <puzzleBoard>& boardQueue)
         temp = newBoard.board[i][j + 1];
         newBoard.board[i][j] = temp;
         newBoard.board[i][j + 1] = 0;
+        unordered_map<string, puzzleBoard>::const_iterator got = visited.find(newBoard.key);
+        if (got == visited.end())
+        {
         boardQueue.push_back(newBoard);
+        }
         //newBoard.printTheBoard(newBoard);
     };
 }

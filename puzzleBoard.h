@@ -8,6 +8,8 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <cstring>
+#include <unordered_map>
 
 using namespace std;
 
@@ -29,6 +31,7 @@ public:
     void operator=(const puzzleBoard &other);
     // finds the blank space
     // void findBlank() const;
+    string key = " " ;
 
 }; // end class
 
