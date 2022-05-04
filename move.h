@@ -1,112 +1,119 @@
-#ifndef H_move
-#define H_move
+#ifndef H_MOVE
+#define H_MOVE
+
 
 #include <iostream>
 #include "puzzleBoard.h"
+#include <deque>
 
 using namespace std;
 
-void moveBlank(puzzleBoard board, int i, int j, deque <puzzleBoard>& boardQueue);
-void moveRight(puzzleBoard board, int i, int j, deque <puzzleBoard>& boardQueue);
-void moveLeft(puzzleBoard board, int i, int j, deque <puzzleBoard>& boardQueue);
-void moveUp(puzzleBoard board, int i, int j, deque <puzzleBoard>& boardQueue);
-void moveDown(puzzleBoard board, int i, int j, deque <puzzleBoard>& boardQueue);
-bool isValidMove(int i, bool isValid);
+void moveBlank(int i, int j, deque <puzzleBoard>& boardQueue);
+void moveRight(int i, int j, deque <puzzleBoard>& boardQueue);
+void moveLeft(int i, int j, deque <puzzleBoard>& boardQueue);
+void moveUp(int i, int j, deque <puzzleBoard>& boardQueue);
+void moveDown(int i, int j, deque <puzzleBoard>& boardQueue);
+bool isValidMove(int i, bool &isValid);
 
-void findBlank(puzzleBoard board, deque <puzzleBoard>& boardQueue)
+void findBlank( deque <puzzleBoard>& boardQueue)
 {
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
-            if (board.board[i][j] == 0)
+        {   
+            if (boardQueue.front().board[i][j] == 0)
             {
-                moveBlank(board, i, j, boardQueue);
+                moveBlank(i, j, boardQueue);
             }
+        }
     }
 }
 
-void moveBlank(puzzleBoard board, int i, int j, deque <puzzleBoard>& boardQueue)
+void moveBlank( int i, int j, deque <puzzleBoard>& boardQueue)
 {
-    moveRight(board, i, j, boardQueue);
-    moveLeft(board, i, j, boardQueue);
-    moveUp(board, i, j, boardQueue);
-    moveDown(board, i, j, boardQueue);
+    moveRight(i, j, boardQueue);
+    moveLeft(i, j, boardQueue);
+    moveUp(i, j, boardQueue);
+    moveDown(i, j, boardQueue);
 }
 
-void moveRight(puzzleBoard board, int i, int j, deque <puzzleBoard>& boardQueue)
+void moveRight( int i, int j, deque <puzzleBoard>& boardQueue)
 {
     bool isValid = false;
     int temp = 0;
-    board.board[i + 1][j]; // moves 0 right
-    isValidMove(i, isValid);
+    isValidMove(i + 1, isValid);
     if (isValid)
     {
-        puzzleBoard newBoard = board;
+        puzzleBoard newBoard = boardQueue.front();
         temp = newBoard.board[i + 1][j];
         newBoard.board[i][j] = temp;
         newBoard.board[i + 1][j] = 0;
         boardQueue.push_back(newBoard);
-    };
-}
-
-void moveLeft(puzzleBoard board, int i, int j, deque <puzzleBoard>& boardQueue)
-{
-    bool isValid = false;
-    int temp = 0;
-    board.board[i - 1][j]; // moves 0 left
-    isValidMove(i, isValid);
-    if (isValid)
-    {
-        puzzleBoard newBoard = board;
-        temp = newBoard.board[i + 1][j];
-        newBoard.board[i][j] = temp;
-        newBoard.board[i + 1][j] = 0;
-        boardQueue.push_back(newBoard);
-    };
-}
-
-void moveUp(puzzleBoard board, int i, int j, deque <puzzleBoard>& boardQueue)
-{
-    bool isValid = false;
-    int temp = 0;
-    board.board[i][j - 1]; // moves 0 up
-    isValidMove(j, isValid);
-    if (isValid)
-    {
-        puzzleBoard newBoard = board;
-        temp = newBoard.board[i + 1][j];
-        newBoard.board[i][j] = temp;
-        newBoard.board[i + 1][j] = 0;
-        boardQueue.push_back(newBoard);
-    };
-}
-
-void moveDown(puzzleBoard board, int i, int j, deque <puzzleBoard>& boardQueue)
-{
-    bool isValid = false;
-    int temp = 0;
-    board.board[i][j + 1]; // moves 0 down
-    isValidMove(j, isValid);
-    if (isValid)
-    {
-        puzzleBoard newBoard = board;
-        temp = newBoard.board[i + 1][j];
-        newBoard.board[i][j] = temp;
-        newBoard.board[i + 1][j] = 0;
-        boardQueue.push_back(newBoard);
-    };
-}
-
-bool isValidMove(int i, bool isValid)
-{
-    bool checkValid = false;
-
-    if (i >= 0 && i < 2)
-    {
-        checkValid = true;
+        //newBoard.printTheBoard(newBoard);
     }
+}
 
-    return checkValid;
+void moveLeft( int i, int j, deque <puzzleBoard>& boardQueue)
+{
+    bool isValid = false;
+    int temp = 0;
+       isValidMove(i-1, isValid);
+    if (isValid)
+    {
+        puzzleBoard newBoard = boardQueue.front();
+        temp = newBoard.board[i + 1][j];
+        newBoard.board[i][j] = temp;
+        newBoard.board[i + 1][j] = 0;
+        boardQueue.push_back(newBoard);
+        //newBoard.printTheBoard(newBoard);
+    };
+}
+
+void moveUp( int i, int j, deque <puzzleBoard>& boardQueue)
+{
+    bool isValid = false;
+    int temp = 0;
+    boardQueue.front().board[i][j - 1]; // moves 0 up
+    isValidMove(j-1, isValid);
+    if (isValid)
+    {
+        puzzleBoard newBoard = boardQueue.front();
+        temp = newBoard.board[i + 1][j];
+        newBoard.board[i][j] = temp;
+        newBoard.board[i + 1][j] = 0;
+        boardQueue.push_back(newBoard);
+        //newBoard.printTheBoard(newBoard);
+    };
+}
+
+void moveDown( int i, int j, deque <puzzleBoard>& boardQueue)
+{
+    bool isValid = false;
+    int temp = 0;
+    boardQueue.front().board[i][j + 1]; // moves 0 down
+    isValidMove(j+1, isValid);
+    if (isValid)
+    {
+        puzzleBoard newBoard = boardQueue.front();
+        temp = newBoard.board[i + 1][j];
+        newBoard.board[i][j] = temp;
+        newBoard.board[i + 1][j] = 0;
+        boardQueue.push_back(newBoard);
+        //newBoard.printTheBoard(newBoard);
+    };
+}
+
+bool isValidMove(int i, bool &isValid)
+{
+    if (i >= 0 && i <= 2)
+    {
+       isValid = true;
+    }
+    else
+    {
+        isValid = false;
+    }
+    return isValid;
 }
 
 #endif

@@ -15,26 +15,13 @@ bool checkSolvable(puzzleBoard board); // prototype
 // will be implemented instead when we get the class object working correctly
 
 int main(int argc, char *argv[])
-{ // command line input
-    // int puzzleInput[18];
-    // int solveInput[9];
+{ 
     bool solvable; // variable for results of checkSolvable
-    deque<puzzleBoard> boardQueue;
-
-    // for (int i = 0; i < 19; i++) // puts command line arguments into an array
-    // {
-    //     puzzleInput[i] = atoi (argv[i]); // converts the char to int
-    // }
-
-    // for (int i = 0; i < 9; i++)
-    // {
-    //     solveInput[i] = atoi (argv[i]);
-    // }
-
+    deque<puzzleBoard> boardQueue; //queue for holding open boards
     puzzleBoard initialBoard;
     puzzleBoard goalBoard;
 
-    char *ptr = argv[1];
+    char *ptr = argv[1]; //fills initial board
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
@@ -43,7 +30,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    ptr = argv[2];
+    ptr = argv[2]; //fills goal
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
@@ -69,7 +56,14 @@ int main(int argc, char *argv[])
         cout << "Puzzle is not solvable :(" << endl;
     }
 
-    findBlank(boardQueue.front(), boardQueue);
+    do
+    {
+        findBlank(boardQueue);
+        boardQueue.pop_front();
+        boardQueue.front().printTheBoard(boardQueue.front());
+    }
+    while (boardQueue.front() != goalBoard);
+    cout << "Goal Board Found!" << endl;
 
     return 0;
 }
