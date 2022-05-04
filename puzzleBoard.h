@@ -16,14 +16,11 @@ class puzzleBoard
 public:
 // the board
     int board[3][3];
-    // assign argv items to the 2d array for the starting state
-    static void fillTheBoard(int *list1);
-    // assing argv items to the 2d array for the goal state
-    static void createGoalBoard(int *list);
+
     // print the board
-    static void printTheBoard();
+    static void printTheBoard(puzzleBoard board);
     // pring goal board
-    static void printGoalBoard();
+    static void printGoalBoard(puzzleBoard board);
     // overload == for comparing boards
     bool operator==(const puzzleBoard &other);
     // overload of != for comparing
@@ -35,42 +32,10 @@ public:
 
 }; // end class
 
-// fill starting state of board
-void puzzleBoard::fillTheBoard(int *list1)
-{
-    int t = 1;
-    int board[3][3] = {0, 0};
-    for (int x = 0; x < 3; ++x)
-    {
-        for (int y = 0; y < 3; ++y)
-        {
-            // cout << "Initial input: " << list1[t] << " " << endl;
-            board[x][y] = list1[t];
-            t++;
-        }
-    }
-};
-
-// //fills the goal state of the board
-void puzzleBoard::createGoalBoard(int *list)
-{
-    int t = 10;
-    int goalBoard[3][3] = {0, 0};
-    for (int x = 0; x < 3; ++x)
-    {
-        for (int y = 0; y < 3; ++y)
-        {
-            // cout << "Initial input: " << list1[t] << " " << endl;
-            goalBoard[x][y] = list[t];
-            t++;
-        }
-    }
-};
 
 // pring board
-void puzzleBoard::printTheBoard() // print off the current board
+void puzzleBoard::printTheBoard(puzzleBoard board) // print off the current board
 {
-    int board[3][3];
     cout << "The board state is : " << endl;
     cout << "_______" << endl; // to create a box around the puzzle
     for (int i = 0; i < 3; i++)
@@ -78,7 +43,7 @@ void puzzleBoard::printTheBoard() // print off the current board
         cout << "|"; // box around the puzzle
         for (int j = 0; j < 3; j++)
         {
-            cout << board[i][j] << "|"; // prints data and then space divider
+            cout << board.board[i][j] << "|"; // prints data and then space divider
         }
         cout << endl;
     }
@@ -86,9 +51,8 @@ void puzzleBoard::printTheBoard() // print off the current board
 };
 
 // prints the goal state
-void puzzleBoard::printGoalBoard() // to print off our goal board
+void puzzleBoard::printGoalBoard(puzzleBoard board) // to print off our goal board
 {
-    int goalBoard[3][3];
     cout << "The Goal Board is : " << endl;
     cout << "_______" << endl; // to create a box around the puzzle
     for (int i = 0; i < 3; i++)
@@ -96,26 +60,12 @@ void puzzleBoard::printGoalBoard() // to print off our goal board
         cout << "|"; // box around the puzzle
         for (int j = 0; j < 3; j++)
         {
-            cout << goalBoard[i][j] << "|"; // prints data and then space divider
+            cout << board.board[i][j] << "|"; // prints data and then space divider
         }
         cout << endl;
     }
     cout << "-------" << endl; // bottom of the box around the puzzle
 };
-
-// find blank space moved to move.h and refactored
-// void puzzleBoard::findBlank() const
-// {
-//     int tempBoard[3][3];
-//     for (int i = 0; i < 3; i++)
-//     {
-//         for (int j = 0; j < 3; j++)
-//         {
-//             if (tempBoard[i][j] == 0)
-//                 cout << "The blank is at: " << i << "," << j << endl;
-//         }
-//     }
-// };
 
 // overload == for comparing boards
 bool puzzleBoard::operator==(const puzzleBoard &other)

@@ -16,32 +16,46 @@ bool checkSolvable(int solveInput[]); // prototype
 //will be implemented instead when we get the class object working correctly
 
 int main (int argc, char *argv[]){ //command line input
-    int puzzleInput[18]; 
-    int solveInput[9];
+    // int puzzleInput[18]; 
+    // int solveInput[9];
     bool solvable; //variable for results of checkSolvable
     deque <puzzleBoard> boardQueue;
 
-    for (int i = 0; i < 19; i++) // puts command line arguments into an array
-    {
-        puzzleInput[i] = atoi (argv[i]); // converts the char to int 
+    // for (int i = 0; i < 19; i++) // puts command line arguments into an array
+    // {
+    //     puzzleInput[i] = atoi (argv[i]); // converts the char to int 
+    // }
+
+    // for (int i = 0; i < 9; i++)
+    // {
+    //     solveInput[i] = atoi (argv[i]);
+    // }
+
+    puzzleBoard initialBoard;
+    puzzleBoard goalBoard;
+
+    char *ptr = argv[1];
+    for (int i = 0; i < 3; i++){
+        for (int j = 0; j < 3; j++){
+            initialBoard.board[i][j] = (*ptr++ - '0');         }
     }
+   
+   ptr = argv[2];
+   for (int i = 0; i < 3; i++){
+       for (int j = 0; j < 3; j++){
+           goalBoard.board[i][j] = (*ptr++ - '0');
+       }
+   }
 
-    for (int i = 0; i < 9; i++)
-    {
-        solveInput[i] = atoi (argv[i]);
-    }
-  
-    puzzleBoard firstBoard;
-    firstBoard.fillTheBoard(puzzleInput);
-    firstBoard.printTheBoard();
-    boardQueue.push_front (firstBoard);
+    // firstBoard.fillTheBoard(puzzleInput);
+    initialBoard.printTheBoard(initialBoard);
+    boardQueue.push_front (initialBoard);
 
-   puzzleBoard goalBoard;
-    goalBoard.createGoalBoard(puzzleInput);
-    goalBoard.printGoalBoard();
-    solvable = checkSolvable(solveInput);
+    // goalBoard.createGoalBoard(puzzleInput);
+    goalBoard.printGoalBoard(goalBoard);
+   // solvable = checkSolvable(goalBoard);
 
-    checkSolvable(solveInput);
+   // checkSolvable(goalBoard);
     solvable = checkSolvable;
 
     if (solvable) // if variable returns true
