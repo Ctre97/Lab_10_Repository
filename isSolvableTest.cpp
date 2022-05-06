@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
     deque<puzzleBoard> boardQueue; //queue for holding open boards
     puzzleBoard initialBoard;
     puzzleBoard goalBoard;
+    int count = 0;
 
     char *ptr = argv[1]; //fills initial board
     for (int i = 0; i < 3; i++)
@@ -61,10 +62,10 @@ int main(int argc, char *argv[])
     {
         findBlank(boardQueue);
         boardQueue.pop_front();
-        boardQueue.front().printTheBoard(boardQueue.front());
+        count++;
     }
     while (boardQueue.front() != goalBoard);
-    cout << "Goal Board Found!" << endl;
+    cout << "Goal Board Found!, the count is " << count << endl;
 
     return 0;
 }

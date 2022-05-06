@@ -30,8 +30,8 @@ public:
     // overload = to be a memberwise copy
     void operator=(const puzzleBoard &other);
     // finds the blank space
-    string fillKey(const puzzleBoard, string key);
-    string key = " " ;
+    string fillKey(const puzzleBoard &board, string &key);
+    string key = "" ;
 
 }; // end class
 
@@ -85,6 +85,10 @@ bool puzzleBoard::operator==(const puzzleBoard &other)
     }
     return true;
 }
+bool puzzleBoard::operator!=(const puzzleBoard &other)
+{
+    return !(*this == other);
+}
 
 // overload of = to memberwise copy
 void puzzleBoard::operator=(const puzzleBoard &other)
@@ -97,7 +101,7 @@ void puzzleBoard::operator=(const puzzleBoard &other)
         }
     }
 }
-string fillKey(const puzzleBoard &board, string key)
+string puzzleBoard::fillKey(const puzzleBoard &board, string &key)
     {
         for (int i = 0; i < 3; i++)
         {

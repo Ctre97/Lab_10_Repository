@@ -6,7 +6,7 @@
 #include "puzzleBoard.h"
 #include <deque>
 #include <unordered_map>
-#include "hashTable.h"
+#include <cstring>
 
 using namespace std;
 
@@ -27,7 +27,6 @@ void findBlank( deque <puzzleBoard>& boardQueue)
         {   
             if (boardQueue.front().board[i][j] == 0)
             {
-                visited[boardQueue.front().key] = boardQueue.front();
                 moveBlank(i, j, boardQueue);
             }
         }
@@ -53,12 +52,14 @@ void moveRight( int i, int j, deque <puzzleBoard>& boardQueue)
         temp = newBoard.board[i + 1][j];
         newBoard.board[i][j] = temp;
         newBoard.board[i + 1][j] = 0;
-        unordered_map<string, puzzleBoard>::const_iterator got = visited.find(newBoard.key);
-        if (got == visited.end())
+        newBoard.fillKey(newBoard, newBoard.key);
+        auto it = visited.find(newBoard.key);
+        if (it == visited.end())
         {
+        visited [newBoard.key] = newBoard;
         boardQueue.push_back(newBoard);
+        cout << boardQueue.size() << endl;
         }
-        //newBoard.printTheBoard(newBoard);
     }
 }
 
@@ -73,12 +74,13 @@ void moveLeft( int i, int j, deque <puzzleBoard>& boardQueue)
         temp = newBoard.board[i - 1][j];
         newBoard.board[i][j] = temp;
         newBoard.board[i - 1][j] = 0;
-        unordered_map<string, puzzleBoard>::const_iterator got = visited.find(newBoard.key);
-        if (got == visited.end())
+        newBoard.fillKey(newBoard, newBoard.key);
+        auto it = visited.find(newBoard.key);
+        if (it == visited.end())
         {
-            boardQueue.push_back(newBoard);
+        visited [newBoard.key] = newBoard;    
+        boardQueue.push_back(newBoard);
         }
-        //newBoard.printTheBoard(newBoard);
     };
 }
 
@@ -93,12 +95,13 @@ void moveUp( int i, int j, deque <puzzleBoard>& boardQueue)
         temp = newBoard.board[i][j - 1];
         newBoard.board[i][j] = temp;
         newBoard.board[i][j - 1] = 0;
-        unordered_map<string, puzzleBoard>::const_iterator got = visited.find(newBoard.key);
-        if (got == visited.end())
+        newBoard.fillKey(newBoard, newBoard.key);
+        auto it = visited.find(newBoard.key);
+        if (it == visited.end())
         {
-            boardQueue.push_back(newBoard);
+        visited [newBoard.key] = newBoard;
+        boardQueue.push_back(newBoard);
         }
-        //newBoard.printTheBoard(newBoard);
     };
 }
 
@@ -113,12 +116,13 @@ void moveDown( int i, int j, deque <puzzleBoard>& boardQueue)
         temp = newBoard.board[i][j + 1];
         newBoard.board[i][j] = temp;
         newBoard.board[i][j + 1] = 0;
-        unordered_map<string, puzzleBoard>::const_iterator got = visited.find(newBoard.key);
-        if (got == visited.end())
+        newBoard.fillKey(newBoard, newBoard.key);
+        auto it = visited.find(newBoard.key);
+        if (it == visited.end())
         {
+        visited [newBoard.key] = newBoard;
         boardQueue.push_back(newBoard);
         }
-        //newBoard.printTheBoard(newBoard);
     };
 }
 
