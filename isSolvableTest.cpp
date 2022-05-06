@@ -42,6 +42,7 @@ int main(int argc, char *argv[])
 
     initialBoard.printTheBoard(initialBoard);
     initialBoard.fillKey(initialBoard, initialBoard.key);
+    goalBoard.fillKey(goalBoard, goalBoard.key);
     boardQueue.push_front(initialBoard);
     goalBoard.printGoalBoard(goalBoard);
     // solvable = checkSolvable(goalBoard);

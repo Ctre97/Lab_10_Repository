@@ -58,7 +58,7 @@ void moveRight( int i, int j, deque <puzzleBoard>& boardQueue)
         {
         visited [newBoard.key] = newBoard;
         boardQueue.push_back(newBoard);
-        cout << boardQueue.size() << endl;
+        // cout << boardQueue.size() << endl;
         }
     }
 }

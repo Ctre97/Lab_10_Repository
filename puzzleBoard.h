@@ -87,7 +87,12 @@ bool puzzleBoard::operator==(const puzzleBoard &other)
 }
 bool puzzleBoard::operator!=(const puzzleBoard &other)
 {
-    return !(*this == other);
+    if(this->key == other.key){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
 // overload of = to memberwise copy
@@ -107,7 +112,7 @@ string puzzleBoard::fillKey(const puzzleBoard &board, string &key)
         {
             for (int j = 0; j < 3; j++)
             {
-                key += board.board[i][j];
+                key += board.board[i][j] - '0';
             }
         }
         return key;
