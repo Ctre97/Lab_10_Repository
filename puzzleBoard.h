@@ -24,7 +24,7 @@ public:
     // pring goal board
     static void printGoalBoard(puzzleBoard board);
     // overload == for comparing boards
-    string operator==(const puzzleBoard &other);
+    bool operator==(const puzzleBoard &other);
     // overload of != for comparing
     bool operator!=(const puzzleBoard &other);
     // overload = to be a memberwise copy
@@ -71,20 +71,20 @@ void puzzleBoard::printGoalBoard(puzzleBoard board) // to print off our goal boa
 };
 
 // overload == for comparing boards
-// bool puzzleBoard::operator==(const puzzleBoard &other)
-// {
-//     for (int i = 0; i < 3; i++)
-//     {
-//         for (int j = 0; j < 3; j++)
-//         {
-//             if (this->board[i][j] != other.board[i][j])
-//             {
-//                 return false;
-//             }
-//         }
-//     }
-//     return true;
-// }
+bool puzzleBoard::operator==(const puzzleBoard &other)
+{
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if (this->board[i][j] != other.board[i][j])
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
 
 // overload of = to memberwise copy
 void puzzleBoard::operator=(const puzzleBoard &other)
