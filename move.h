@@ -58,8 +58,8 @@ void moveRight( int i, int j, deque <puzzleBoard>& boardQueue)
         if (it == visited.end())
         {
         visited.insert(make_pair(newBoard.key, newBoard));
+        newBoard.parent = &boardQueue.front();
         boardQueue.push_back(newBoard);
-        // cout << boardQueue.size() << endl;
         }
     }
 }
@@ -80,7 +80,8 @@ void moveLeft( int i, int j, deque <puzzleBoard>& boardQueue)
         auto it = visited.find(newBoard.key);
         if (it == visited.end())
         {
-        visited.insert(make_pair(newBoard.key, newBoard));    
+        visited.insert(make_pair(newBoard.key, newBoard));
+        newBoard.parent = &boardQueue.front();    
         boardQueue.push_back(newBoard);
         }
     };
@@ -103,6 +104,7 @@ void moveUp( int i, int j, deque <puzzleBoard>& boardQueue)
         if (it == visited.end())
         {
         visited.insert(make_pair(newBoard.key, newBoard));
+        newBoard.parent = &boardQueue.front();
         boardQueue.push_back(newBoard);
         }
     };
@@ -125,6 +127,7 @@ void moveDown( int i, int j, deque <puzzleBoard>& boardQueue)
         if (it == visited.end())
         {
         visited.insert(make_pair(newBoard.key, newBoard));
+        newBoard.parent = &boardQueue.front();
         boardQueue.push_back(newBoard);
         }
     };

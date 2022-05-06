@@ -18,6 +18,7 @@ int main(int argc, char *argv[])
 { 
     bool solvable; // variable for results of checkSolvable
     deque<puzzleBoard> boardQueue; //queue for holding open boards
+    deque<puzzleBoard*> winningQueue; // board for holding winning moves
     puzzleBoard initialBoard;
     puzzleBoard goalBoard;
     int count = 0;
@@ -42,6 +43,7 @@ int main(int argc, char *argv[])
     
     initialBoard.printTheBoard(initialBoard);
     initialBoard.key = initialBoard.fillKey(initialBoard, initialBoard.key);
+    initialBoard.parent=nullptr;
     goalBoard.key = goalBoard.fillKey(goalBoard, goalBoard.key);
     boardQueue.push_front(initialBoard);
     goalBoard.printGoalBoard(goalBoard);
@@ -67,7 +69,20 @@ looptopissoffjuan:
         goto looptopissoffjuan; 
     };
     cout << "Goal Board Found!, the count is " << count << endl;
+    
+    winningQueue.push_front(&boardQueue.front());
 
+    for(int i =5; i<= winningQueue.size();)
+    {
+        winningQueue.push_front(winningQueue.front()->parent);
+        cout << "You're a fucking idiot" << endl;
+    }
+
+    while (winningQueue.empty() != true){
+    winningQueue.front()->printTheBoard;
+    winningQueue.pop_front();
+    }
+    
     return 0;
 }
 

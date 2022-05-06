@@ -33,6 +33,7 @@ public:
     // finds the blank space
     string fillKey(const puzzleBoard board, string key);
     string key = "" ;
+    puzzleBoard *parent;
 
 }; // end class
 
