@@ -103,4 +103,5 @@ void puzzleBoard::operator=(const puzzleBoard &other)
         }
     }
 }
+
 #endif
