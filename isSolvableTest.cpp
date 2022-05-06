@@ -39,7 +39,8 @@ int main(int argc, char *argv[])
             goalBoard.board[i][j] = (*ptr++ - '0');
         }
     }
-
+    ptr= nullptr;
+    delete ptr;
     initialBoard.printTheBoard(initialBoard);
     initialBoard.fillKey(initialBoard, initialBoard.key);
     goalBoard.fillKey(goalBoard, goalBoard.key);
@@ -65,7 +66,7 @@ int main(int argc, char *argv[])
         boardQueue.pop_front();
         count++;
     }
-    while (boardQueue.front() != goalBoard);
+    while (boardQueue.front().key != goalBoard.key);
     cout << "Goal Board Found!, the count is " << count << endl;
 
     return 0;

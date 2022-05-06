@@ -88,10 +88,10 @@ bool puzzleBoard::operator==(const puzzleBoard &other)
 bool puzzleBoard::operator!=(const puzzleBoard &other)
 {
     if(this->key == other.key){
-        return true;
+        return false;
     }
     else{
-        return false;
+        return true;
     }
 }
 
@@ -108,11 +108,12 @@ void puzzleBoard::operator=(const puzzleBoard &other)
 }
 string puzzleBoard::fillKey(const puzzleBoard &board, string &key)
     {
+        char buffer [10];
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
             {
-                key += board.board[i][j] - '0';
+                key += itoa(board.board[i][j], buffer, 10);
             }
         }
         return key;
