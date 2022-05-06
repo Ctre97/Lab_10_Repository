@@ -39,11 +39,10 @@ int main(int argc, char *argv[])
             goalBoard.board[i][j] = (*ptr++ - '0');
         }
     }
-    ptr= nullptr;
-    delete ptr;
+    
     initialBoard.printTheBoard(initialBoard);
-    initialBoard.fillKey(initialBoard, initialBoard.key);
-    goalBoard.fillKey(goalBoard, goalBoard.key);
+    initialBoard.key = initialBoard.fillKey(initialBoard, initialBoard.key);
+    goalBoard.key = goalBoard.fillKey(goalBoard, goalBoard.key);
     boardQueue.push_front(initialBoard);
     goalBoard.printGoalBoard(goalBoard);
     // solvable = checkSolvable(goalBoard);
@@ -59,14 +58,15 @@ int main(int argc, char *argv[])
     {
         cout << "Puzzle is not solvable :(" << endl;
     }
-
-    do
+looptopissoffjuan:
+    if (boardQueue.front().key != goalBoard.key)
     {
         findBlank(boardQueue);
         boardQueue.pop_front();
         count++;
-    }
-    while (boardQueue.front().key != goalBoard.key);
+        cout << boardQueue.front().key << endl;
+        goto looptopissoffjuan; 
+       };
     cout << "Goal Board Found!, the count is " << count << endl;
 
     return 0;

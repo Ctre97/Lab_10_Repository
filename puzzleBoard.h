@@ -9,6 +9,7 @@
 #include <vector>
 #include <algorithm>
 #include <cstring>
+#include <string>
 #include <unordered_map>
 
 using namespace std;
@@ -30,7 +31,7 @@ public:
     // overload = to be a memberwise copy
     void operator=(const puzzleBoard &other);
     // finds the blank space
-    string fillKey(const puzzleBoard &board, string &key);
+    string fillKey(const puzzleBoard board, string key);
     string key = "" ;
 
 }; // end class
@@ -106,14 +107,14 @@ void puzzleBoard::operator=(const puzzleBoard &other)
         }
     }
 }
-string puzzleBoard::fillKey(const puzzleBoard &board, string &key)
+string puzzleBoard::fillKey(const puzzleBoard board, string key)
     {
-        char buffer [10];
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
             {
-                key += itoa(board.board[i][j], buffer, 10);
+                char buffer [10];
+                key = key + to_string(board.board[i][j]);
             }
         }
         return key;
