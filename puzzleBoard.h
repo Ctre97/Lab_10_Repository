@@ -24,13 +24,13 @@ public:
     // pring goal board
     static void printGoalBoard(puzzleBoard board);
     // overload == for comparing boards
-    bool operator==(const puzzleBoard &other);
+    string operator==(const puzzleBoard &other);
     // overload of != for comparing
     bool operator!=(const puzzleBoard &other);
     // overload = to be a memberwise copy
     void operator=(const puzzleBoard &other);
     // finds the blank space
-    // void findBlank() const;
+    string fillKey(const puzzleBoard, string key);
     string key = " " ;
 
 }; // end class
@@ -71,26 +71,20 @@ void puzzleBoard::printGoalBoard(puzzleBoard board) // to print off our goal boa
 };
 
 // overload == for comparing boards
-bool puzzleBoard::operator==(const puzzleBoard &other)
-{
-    for (int i = 0; i < 3; i++)
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            if (this->board[i][j] != other.board[i][j])
-            {
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
-// overload of != for comparing
-bool puzzleBoard::operator!=(const puzzleBoard &other)
-{
-    return !(*this == other);
-}
+// bool puzzleBoard::operator==(const puzzleBoard &other)
+// {
+//     for (int i = 0; i < 3; i++)
+//     {
+//         for (int j = 0; j < 3; j++)
+//         {
+//             if (this->board[i][j] != other.board[i][j])
+//             {
+//                 return false;
+//             }
+//         }
+//     }
+//     return true;
+// }
 
 // overload of = to memberwise copy
 void puzzleBoard::operator=(const puzzleBoard &other)
@@ -103,4 +97,15 @@ void puzzleBoard::operator=(const puzzleBoard &other)
         }
     }
 }
+string fillKey(const puzzleBoard &board, string key)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                key += board.board[i][j];
+            }
+        }
+        return key;
+    }
 #endif
