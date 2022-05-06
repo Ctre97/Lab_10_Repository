@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
     goalBoard.key = goalBoard.fillKey(goalBoard, goalBoard.key);
     boardQueue.push_front(initialBoard);
     goalBoard.printGoalBoard(goalBoard);
-    // solvable = checkSolvable(goalBoard);
+    solvable = checkSolvable(goalBoard);
 
     checkSolvable(goalBoard);
     solvable = checkSolvable(initialBoard);
@@ -59,14 +59,13 @@ int main(int argc, char *argv[])
         cout << "Puzzle is not solvable :(" << endl;
     }
 looptopissoffjuan:
-    if (boardQueue.front().key != goalBoard.key)
-    {
+     if (boardQueue.front().key != goalBoard.key)
+     {
         findBlank(boardQueue);
         boardQueue.pop_front();
         count++;
-        cout << boardQueue.front().key << endl;
         goto looptopissoffjuan; 
-       };
+    };
     cout << "Goal Board Found!, the count is " << count << endl;
 
     return 0;

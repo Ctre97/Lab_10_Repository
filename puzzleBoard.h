@@ -114,7 +114,7 @@ string puzzleBoard::fillKey(const puzzleBoard board, string key)
             for (int j = 0; j < 3; j++)
             {
                 char buffer [10];
-                key = key + to_string(board.board[i][j]);
+                key += itoa(board.board[i][j], buffer, 10);
             }
         }
         return key;

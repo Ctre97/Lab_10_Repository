@@ -52,6 +52,7 @@ void moveRight( int i, int j, deque <puzzleBoard>& boardQueue)
         temp = newBoard.board[i + 1][j];
         newBoard.board[i][j] = temp;
         newBoard.board[i + 1][j] = 0;
+        newBoard.key = "";
         newBoard.key = newBoard.fillKey(newBoard, newBoard.key);
         auto it = visited.find(newBoard.key);
         if (it == visited.end())
@@ -74,6 +75,7 @@ void moveLeft( int i, int j, deque <puzzleBoard>& boardQueue)
         temp = newBoard.board[i - 1][j];
         newBoard.board[i][j] = temp;
         newBoard.board[i - 1][j] = 0;
+        newBoard.key = "";
         newBoard.key = newBoard.fillKey(newBoard, newBoard.key);
         auto it = visited.find(newBoard.key);
         if (it == visited.end())
@@ -95,6 +97,7 @@ void moveUp( int i, int j, deque <puzzleBoard>& boardQueue)
         temp = newBoard.board[i][j - 1];
         newBoard.board[i][j] = temp;
         newBoard.board[i][j - 1] = 0;
+        newBoard.key = "";
         newBoard.key = newBoard.fillKey(newBoard, newBoard.key);
         auto it = visited.find(newBoard.key);
         if (it == visited.end())
@@ -116,6 +119,7 @@ void moveDown( int i, int j, deque <puzzleBoard>& boardQueue)
         temp = newBoard.board[i][j + 1];
         newBoard.board[i][j] = temp;
         newBoard.board[i][j + 1] = 0;
+        newBoard.key = "";
         newBoard.key = newBoard.fillKey(newBoard, newBoard.key);
         auto it = visited.find(newBoard.key);
         if (it == visited.end())
