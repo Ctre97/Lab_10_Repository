@@ -17,7 +17,7 @@ void moveUp(int i, int j, deque <puzzleBoard>& boardQueue);
 void moveDown(int i, int j, deque <puzzleBoard>& boardQueue);
 bool isValidMove(int i, bool &isValid);
 
-unordered_map <string, puzzleBoard, hashTable> visited;
+unordered_map <string, puzzleBoard> visited;
 
 void findBlank( deque <puzzleBoard>& boardQueue)
 {
@@ -27,6 +27,7 @@ void findBlank( deque <puzzleBoard>& boardQueue)
         {   
             if (boardQueue.front().board[i][j] == 0)
             {
+                visited[boardQueue.front().key] = boardQueue.front();
                 moveBlank(i, j, boardQueue);
             }
         }
