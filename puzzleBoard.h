@@ -11,6 +11,7 @@
 #include <cstring>
 #include <string>
 #include <unordered_map>
+#include <deque>
 
 using namespace std;
 
@@ -33,7 +34,7 @@ public:
     // finds the blank space
     string fillKey(const puzzleBoard board, string key);
     string key = "" ;
-    puzzleBoard *parent;
+    vector <string> traceBack;
 
 }; // end class
 

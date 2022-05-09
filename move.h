@@ -7,6 +7,7 @@
 #include <deque>
 #include <unordered_map>
 #include <cstring>
+#include <vector>
 
 using namespace std;
 
@@ -58,7 +59,8 @@ void moveRight( int i, int j, deque <puzzleBoard>& boardQueue)
         if (it == visited.end())
         {
         visited.insert(make_pair(newBoard.key, newBoard));
-        newBoard.parent = &boardQueue.front();
+        newBoard.traceBack = boardQueue.front().traceBack;
+        newBoard.traceBack.push_back(newBoard.key);
         boardQueue.push_back(newBoard);
         }
     }
@@ -69,6 +71,7 @@ void moveLeft( int i, int j, deque <puzzleBoard>& boardQueue)
     bool isValid = false;
     int temp = 0;
     isValidMove(i-1, isValid);
+    int tempBoard[3][3];
     if (isValid)
     {
         puzzleBoard newBoard = boardQueue.front();
@@ -81,7 +84,8 @@ void moveLeft( int i, int j, deque <puzzleBoard>& boardQueue)
         if (it == visited.end())
         {
         visited.insert(make_pair(newBoard.key, newBoard));
-        newBoard.parent = &boardQueue.front();    
+        newBoard.traceBack = boardQueue.front().traceBack;
+        newBoard.traceBack.push_back(newBoard.key);
         boardQueue.push_back(newBoard);
         }
     };
@@ -92,6 +96,7 @@ void moveUp( int i, int j, deque <puzzleBoard>& boardQueue)
     bool isValid = false;
     int temp = 0;
     isValidMove(j-1, isValid);
+    int tempBoard[3][3];
     if (isValid)
     {
         puzzleBoard newBoard = boardQueue.front();
@@ -104,7 +109,8 @@ void moveUp( int i, int j, deque <puzzleBoard>& boardQueue)
         if (it == visited.end())
         {
         visited.insert(make_pair(newBoard.key, newBoard));
-        newBoard.parent = &boardQueue.front();
+        newBoard.traceBack = boardQueue.front().traceBack;
+        newBoard.traceBack.push_back(newBoard.key);
         boardQueue.push_back(newBoard);
         }
     };
@@ -115,6 +121,7 @@ void moveDown( int i, int j, deque <puzzleBoard>& boardQueue)
     bool isValid = false;
     int temp = 0;
     isValidMove(j+1, isValid);
+    int tempBoard[3][3];
     if (isValid)
     {
         puzzleBoard newBoard = boardQueue.front();
@@ -127,7 +134,8 @@ void moveDown( int i, int j, deque <puzzleBoard>& boardQueue)
         if (it == visited.end())
         {
         visited.insert(make_pair(newBoard.key, newBoard));
-        newBoard.parent = &boardQueue.front();
+        newBoard.traceBack = boardQueue.front().traceBack;
+        newBoard.traceBack.push_back(newBoard.key);
         boardQueue.push_back(newBoard);
         }
     };

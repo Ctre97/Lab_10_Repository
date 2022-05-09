@@ -7,23 +7,23 @@
 #include <deque>
 #include "puzzleBoard.h"
 #include "move.h"
+#include <vector>
 
 using namespace std;
 
 bool checkSolvable(puzzleBoard board); // prototype
-
 // will be implemented instead when we get the class object working correctly
 
 int main(int argc, char *argv[])
-{ 
-    bool solvable; // variable for results of checkSolvable
-    deque<puzzleBoard> boardQueue; //queue for holding open boards
-    deque<puzzleBoard*> winningQueue; // board for holding winning moves
+{
+    bool solvable;                     // variable for results of checkSolvable
+    deque<puzzleBoard> boardQueue;     // queue for holding open boards
+    deque<puzzleBoard *> winningQueue; // board for holding winning moves
     puzzleBoard initialBoard;
     puzzleBoard goalBoard;
     int count = 0;
 
-    char *ptr = argv[1]; //fills initial board
+    char *ptr = argv[1]; // fills initial board
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    ptr = argv[2]; //fills goal
+    ptr = argv[2]; // fills goal
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
@@ -40,10 +40,9 @@ int main(int argc, char *argv[])
             goalBoard.board[i][j] = (*ptr++ - '0');
         }
     }
-    
+
     initialBoard.printTheBoard(initialBoard);
     initialBoard.key = initialBoard.fillKey(initialBoard, initialBoard.key);
-    initialBoard.parent=nullptr;
     goalBoard.key = goalBoard.fillKey(goalBoard, goalBoard.key);
     boardQueue.push_front(initialBoard);
     goalBoard.printGoalBoard(goalBoard);
@@ -60,28 +59,32 @@ int main(int argc, char *argv[])
     {
         cout << "Puzzle is not solvable :(" << endl;
     }
-looptopissoffjuan:
-     if (boardQueue.front().key != goalBoard.key)
-     {
+
+    do
+    {
         findBlank(boardQueue);
         boardQueue.pop_front();
         count++;
-        goto looptopissoffjuan; 
-    };
-    cout << "Goal Board Found!, the count is " << count << endl;
-    
-    winningQueue.push_front(&boardQueue.front());
+    }
 
-    for(int i =5; i<= winningQueue.size();)
+    while (boardQueue.front().key != goalBoard.key);
+    cout<< "goal Board found! the count is: " << count << endl;
+
+    // loopForJuan:
+    //      if (boardQueue.front().key != goalBoard.key)
+    //      {
+    //         findBlank(boardQueue);
+    //         boardQueue.pop_front();
+    //         count++;
+    //         goto loopForJuan;
+    //     };
+    //     cout << "Goal Board Found!, the count is " << count << endl;
+
+    do
     {
-        winningQueue.push_front(winningQueue.front()->parent);
-        cout << "You're a fucking idiot" << endl;
-    }
-
-    while (winningQueue.empty() != true){
-    winningQueue.front()->printTheBoard;
-    winningQueue.pop_front();
-    }
+        cout << boardQueue.front().traceBack.back() << endl;
+        boardQueue.front().traceBack.pop_back();
+    } while (boardQueue.front().traceBack.front() != 0);
     
     return 0;
 }
@@ -108,13 +111,13 @@ bool checkSolvable(puzzleBoard board)
             }
         }
     }
-            if (counter % 2 == 0) // if the division results in no remainder it is even
-            {
-                solvable = true;
-            }
-            else // it is odd
-            {
-                solvable = false;
-            }
-            return solvable;
-        }
+    if (counter % 2 == 0) // if the division results in no remainder it is even
+    {
+        solvable = true;
+    }
+    else // it is odd
+    {
+        solvable = false;
+    }
+    return solvable;
+}
