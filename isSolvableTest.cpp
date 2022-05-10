@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
     {
         cout << boardQueue.front().traceBack.back() << endl;
         boardQueue.front().traceBack.pop_back();
-    } while (boardQueue.front().traceBack.front() != 0);
+    } while (boardQueue.front().traceBack.front().size() != 0);
     
     return 0;
 }
