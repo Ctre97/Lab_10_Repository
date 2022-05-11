@@ -67,18 +67,6 @@ int main(int argc, char *argv[])
     while (boardQueue.front().key != goalBoard.key);
     cout << "Goal Board found! the number of searched boards is: " << count << endl;
 
-    //goto statement not in use because its bad, but funny. 
-    // loopForJuan:
-    //      if (boardQueue.front().key != goalBoard.key)
-    //      {
-    //         findBlank(boardQueue);
-    //         boardQueue.pop_front();
-    //         count++;
-    //         goto loopForJuan;
-    //     };
-    //     cout << "Goal Board Found!, the count is " << count << endl;
-
-
     //output the moves to get to the solution
     do
     {
