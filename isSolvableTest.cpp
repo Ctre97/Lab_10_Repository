@@ -3,26 +3,23 @@
 // Speed and Power Studios
 
 #include <iostream>
-#include <cmath>
 #include <deque>
 #include "puzzleBoard.h"
 #include "move.h"
-#include <vector>
 
 using namespace std;
 
 bool checkSolvable(puzzleBoard initialBoard, puzzleBoard goalBoard); // prototype
-// will be implemented instead when we get the class object working correctly
 
 int main(int argc, char *argv[])
 {
     bool solvable;                     // variable for results of checkSolvable
     deque<puzzleBoard> boardQueue;     // queue for holding open boards
-    deque<puzzleBoard *> winningQueue; // board for holding winning moves
     puzzleBoard initialBoard;
     puzzleBoard goalBoard;
     int count = 0;
     int moveCount = 0;
+    cout << "Speed and Power Studios Presents: 8-Puzzle Solver by Levi Franklin and Collin Trehar" << endl;
 
     char *ptr = argv[1]; // fills initial board
     for (int i = 0; i < 3; i++)
@@ -67,7 +64,7 @@ int main(int argc, char *argv[])
     }
 
     while (boardQueue.front().key != goalBoard.key);
-    cout << "goal Board found! the count is: " << count << endl;
+    cout << "Goal Board found! the number of searched boards is: " << count << endl;
 
     // loopForJuan:
     //      if (boardQueue.front().key != goalBoard.key)
@@ -104,7 +101,7 @@ int main(int argc, char *argv[])
     //     boardQueue.front().traceBack.pop_front();
     // } while (boardQueue.front().traceBack.size() != 0);
     cout << "Total Moves: " << moveCount << endl;
-
+    cout << "Speed and Power Studios Presents: 8-Puzzle Solver by Levi Franklin and Collin Trehar" << endl;
     return 0;
 }
 
