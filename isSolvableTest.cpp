@@ -56,6 +56,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    // find the solution
     do
     {
         findBlank(boardQueue);
@@ -66,6 +67,7 @@ int main(int argc, char *argv[])
     while (boardQueue.front().key != goalBoard.key);
     cout << "Goal Board found! the number of searched boards is: " << count << endl;
 
+    //goto statement not in use because its bad, but funny. 
     // loopForJuan:
     //      if (boardQueue.front().key != goalBoard.key)
     //      {
@@ -76,6 +78,8 @@ int main(int argc, char *argv[])
     //     };
     //     cout << "Goal Board Found!, the count is " << count << endl;
 
+
+    //output the moves to get to the solution
     do
     {
         cout << "  -----------" << endl;
@@ -93,15 +97,8 @@ int main(int argc, char *argv[])
         boardQueue.front().traceBack.pop_front();
     } while (boardQueue.front().traceBack.size() != 0);
 
-    // This is is original, if you think it looks cleaner, feel free to re-implement it, I know the other code is ridiculous, but in line formatting is lyfe
-    // do
-    // {
-    //     cout << boardQueue.front().traceBack.front()[1] << boardQueue.front().traceBack.front()[2] << boardQueue.front().traceBack.front()[3] << endl;
-    //     moveCount++;
-    //     boardQueue.front().traceBack.pop_front();
-    // } while (boardQueue.front().traceBack.size() != 0);
     cout << "Total Moves: " << moveCount << endl;
-    cout << "Speed and Power Studios Presents: 8-Puzzle Solver by Levi Franklin and Collin Trehar" << endl;
+    cout << "Speed and Power Studios thanks you for your time" << endl;
     return 0;
 }
 

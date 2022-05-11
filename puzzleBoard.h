@@ -33,7 +33,9 @@ public:
     void operator=(const puzzleBoard &other);
     // finds the blank space
     string fillKey(const puzzleBoard board, string key);
+    //key for the unordered map
     string key = "" ;
+    //queue of the board that came before
     deque <string> traceBack;
 
 }; // end class
@@ -109,6 +111,7 @@ void puzzleBoard::operator=(const puzzleBoard &other)
         }
     }
 }
+// creats a string that is the key from the board state
 string puzzleBoard::fillKey(const puzzleBoard board, string key)
     {
         for (int i = 0; i < 3; i++)
