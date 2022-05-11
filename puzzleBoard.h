@@ -34,7 +34,7 @@ public:
     // finds the blank space
     string fillKey(const puzzleBoard board, string key);
     string key = "" ;
-    vector <string> traceBack;
+    deque <string> traceBack;
 
 }; // end class
 
