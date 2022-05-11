@@ -11,7 +11,7 @@
 
 using namespace std;
 
-bool checkSolvable(puzzleBoard board); // prototype
+bool checkSolvable(puzzleBoard initialBoard, puzzleBoard goalBoard); // prototype
 // will be implemented instead when we get the class object working correctly
 
 int main(int argc, char *argv[])
@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
     goalBoard.key = goalBoard.fillKey(goalBoard, goalBoard.key);
     boardQueue.push_front(initialBoard);
     goalBoard.printGoalBoard(goalBoard);
-    solvable = checkSolvable(initialBoard);
+    solvable = checkSolvable(initialBoard, goalBoard);
 
     if (solvable) // if variable returns true
     {
@@ -109,34 +109,42 @@ int main(int argc, char *argv[])
 }
 
 // function to check if the problem can be solved. Can be done from original argv input
-bool checkSolvable(puzzleBoard board)
+bool checkSolvable(puzzleBoard initialBoard, puzzleBoard goalBoard)
 {
     bool solvable;
-    int counter = 0;
+    int counter1 = 0;
+    int counter2 = 0;
+    int x = 0;
+    int y = 0;
 
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 9-1; i++)
     {
-        for (int j = 0; j < 3; j++)
+        for (int j = i + 1; j < 9; j++)
         {
-            for (int k = 0; k < 3; k++) // n
-            {
-                for (int l = 0; l < 3; l++) // number being checked against
-                {
-                    if (board.board[i][j] && board.board[k][l] && board.board[i][j] > board.board[k][l])
-                    {
-                        counter++;
-                        cout << counter << endl;
-                    }
-                    // cout << i << " : " << j << " : " << k << " : " << l << endl;
-                }
-            }
+            if ((initialBoard.key[i]-'0') && (initialBoard.key[j]-'0') && (initialBoard.key[i]-'0') > (initialBoard.key[j]-'0'))
+            {counter1++;}
         }
     }
-    if (counter % 2 == 0) // if the division results in no remainder it is even
+    cout << counter1 << endl;
+
+    for (int i = 0; i < 9-1; i++)
+    {
+        for (int j = i + 1; j < 9; j++)
+        {
+            if ((goalBoard.key[i]-'0') && (goalBoard.key[j]-'0') && (goalBoard.key[i]-'0') > (goalBoard.key[j]-'0'))
+            {counter2++;}
+        }
+    }
+    cout << counter2 << endl;
+    
+    
+    
+    
+    if ((counter1 % 2 == 0 && counter2 % 2 == 0) || (counter1 %2 != 0 && counter2 %2 != 0)) // if the inversions on both boards are both even or both odd, board is solvable
     {
         solvable = true;
     }
-    else if (counter % 2 != 0) // it is odd
+    else
     {
         solvable = false;
     }
